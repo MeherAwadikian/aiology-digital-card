@@ -50,6 +50,12 @@
     L.push("FN:" + esc(cfg.name || ""));
     if (cfg.org) L.push("ORG:" + esc(cfg.org));
     if (cfg.title) L.push("TITLE:" + esc(cfg.title));
+    if (cfg.avatar) {
+      var photoUrl = /^https?:\/\//i.test(cfg.avatar)
+        ? cfg.avatar
+        : (cfg.url || "").replace(/\/$/, "") + "/" + cfg.avatar.replace(/^\//, "");
+      if (photoUrl) L.push("PHOTO;VALUE=URI:" + photoUrl);
+    }
     (cfg.phones || []).forEach(function (p) {
       var type = /cell|mobile/i.test(p.label || "") ? "CELL" : "WORK";
       var pref = p.primary ? ",PREF" : "";
@@ -120,7 +126,9 @@
     var saveLabel = cfg.saveLabel || "Save to Contacts";
     mount.className = "card";
     mount.innerHTML =
-      '<div class="avatar" aria-hidden="true">' + escHtml(initials) + "</div>" +
+      (cfg.avatar
+        ? '<img class="avatar" src="' + escHtml(cfg.avatar) + '" alt="" />'
+        : '<div class="avatar" aria-hidden="true">' + escHtml(initials) + "</div>") +
       "<h1>" + escHtml(cfg.name || "") + "</h1>" +
       (cfg.title ? '<p class="title">' + escHtml(cfg.title) + "</p>" : "") +
       (cfg.org ? '<p class="org">' + escHtml(cfg.org) + "</p>" : "") +

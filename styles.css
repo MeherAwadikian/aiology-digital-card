@@ -52,6 +52,10 @@ body {
   box-shadow: 0 8px 24px rgba(20,184,166,0.38);
 }
 
+img.avatar {
+  object-fit: cover;
+}
+
 .card h1 {
   margin: 0 0 4px;
   font-size: 26px;

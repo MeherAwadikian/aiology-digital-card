@@ -2,6 +2,7 @@ window.CARD_CONFIG = {
   "url": "https://card.aiology.live/",
   "name": "Meher Awadikian",
   "initials": "MA",
+  "avatar": "assets/avatar.png",
   "title": "Founder & AI Systems Architect",
   "org": "AiOlogy",
   "footer": "AIOLOGY.LIVE",
